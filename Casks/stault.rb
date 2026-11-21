@@ -17,6 +17,13 @@ cask "stault" do
 
   app "Stault.app"
 
+  # The app bundle has no sealed signature, and macOS reports a quarantined
+  # copy of such an app as damaged. Drop this once the build is signed and
+  # notarized.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Stault.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/com.mosattler.stault",
     "~/Library/Caches/com.mosattler.stault",
@@ -24,7 +31,7 @@ cask "stault" do
   ]
 
   caveats <<~EOS
-    Stault is not code-signed. macOS blocks the first launch; allow it under
-    System Settings → Privacy & Security → Open Anyway.
+    Stault is not code-signed. This cask removes the quarantine flag from the
+    app so that macOS opens it, which skips the Gatekeeper check.
   EOS
 end
