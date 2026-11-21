@@ -13,7 +13,7 @@ cask "stault" do
   end
 
   depends_on arch: :arm64
-  depends_on :macos
+  depends_on macos: ">= :sonoma"
 
   app "Stault.app"
 
