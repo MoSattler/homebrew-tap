@@ -1,6 +1,6 @@
 cask "stault" do
-  version "0.3.1"
-  sha256 "6cd09ca62e5223f206294332bfe3ba960fc851c8557fc518f79fbcb4a0f1ef74"
+  version "0.4.0"
+  sha256 "efe28b68d74024136a0de572b23f162a07ef60876f28d526c5a1094767c0ded9"
 
   url "https://github.com/MoSattler/stault/releases/download/v#{version}/macos-arm64-Stault.dmg"
   name "Stault"
