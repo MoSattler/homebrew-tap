@@ -1,8 +1,14 @@
+# The release workflow of MoSattler/stault (.github/workflows/release.yml)
+# writes this cask into MoSattler/homebrew-tap for every release, with the
+# version and checksums filled in. Change it there, not in the tap.
 cask "stault" do
-  version "0.12.0"
-  sha256 "5ad2a7bb83a32869a248a34de2c92dac9b9227198097cff7a96d4cfce76f0528"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://github.com/MoSattler/stault/releases/download/v#{version}/macos-arm64-Stault.dmg"
+  version "0.13.0"
+  sha256 arm:   "6623682fd21d1206cfa380650cccdaa1305fb591ed5ba8ed596e7af9ce28b6f7",
+         intel: "ca621a54e933daa38c4a64507363aa868808a2f61daa15fdd8275b0b69eb88c5"
+
+  url "https://github.com/MoSattler/stault/releases/download/v#{version}/macos-#{arch}-Stault.dmg"
   name "Stault"
   desc "Steam-style desktop client for a self-hosted GameVault server"
   homepage "https://github.com/MoSattler/stault"
@@ -12,7 +18,6 @@ cask "stault" do
     strategy :github_latest
   end
 
-  depends_on arch: :arm64
   depends_on macos: :sonoma
 
   app "Stault.app"
